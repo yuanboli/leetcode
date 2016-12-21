@@ -5,7 +5,7 @@ using namespace std;
 
 class Solution {
 private:
-    int at[150][150];
+    int atl[150][150];
     int pc[150][150];
     int flag1[150][150];
     int flag2[150][150];
@@ -18,8 +18,8 @@ private:
 
         if(pc[i][j] == 1)
             return true;
-        if(pc[i][j] == 0)
-            return false;
+ //       if(pc[i][j] == 0)
+ //           return false;
 
         if(i == 0 || j == 0)
         {
@@ -47,14 +47,14 @@ private:
 
         flag1[i][j] = 1;
 
-        if(at[i][j] == 1)
+        if(atl[i][j] == 1)
             return true;
-        if(at[i][j] == 0)
-            return false;
+ //       if(atl[i][j] == 0)
+ //           return false;
 
         if(i == matrix.size()-1 || j == matrix[0].size() - 1)
         {
-            at[i][j] = 1;
+            atl[i][j] = 1;
             return true;
         }
 
@@ -64,12 +64,12 @@ private:
             int ny = j + dy[k];
             if(nx >= 0 && nx < matrix.size() && ny >= 0 && ny < matrix[0].size() && flag1[nx][ny] != 1 && matrix[nx][ny] <= matrix[i][j] && reachAt(nx, ny, matrix))
             {
-                at[i][j] = 1;
+                atl[i][j] = 1;
                 return true;
             }
         }
 
-        at[i][j] = 0;
+        atl[i][j] = 0;
         return false;
     }
 
@@ -83,7 +83,7 @@ public:
         for(int i = 0; i < m; i++)
             for(int j = 0; j < n; j++)
             {
-                at[i][j] = -1;
+                atl[i][j] = -1;
                 pc[i][j] = -1;
             }
 
