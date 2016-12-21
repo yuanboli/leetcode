@@ -1,6 +1,8 @@
 #include <vector>
 #include <cstring>
 using namespace std;
+
+
 class Solution {
 private:
     int at[150][150];
@@ -16,8 +18,8 @@ private:
 
         if(pc[i][j] == 1)
             return true;
-//        if(pc[i][j] == 0)
-//            return false;
+        if(pc[i][j] == 0)
+            return false;
 
         if(i == 0 || j == 0)
         {
@@ -25,7 +27,7 @@ private:
             return true;
         }
 
-        for(int k = 0; k < 4; i++)
+        for(int k = 0; k < 4; k++)
         {
             int nx = i + dx[k];
             int ny = j + dy[k];
@@ -47,8 +49,8 @@ private:
 
         if(at[i][j] == 1)
             return true;
-//        if(at[i][j] == 0)
-//            return false;
+        if(at[i][j] == 0)
+            return false;
 
         if(i == matrix.size()-1 || j == matrix[0].size() - 1)
         {
@@ -56,7 +58,7 @@ private:
             return true;
         }
 
-        for(int k = 0; k < 4; i++)
+        for(int k = 0; k < 4; k++)
         {
             int nx = i + dx[k];
             int ny = j + dy[k];
@@ -72,17 +74,17 @@ private:
     }
 
 public:
-    vector<pair<int, int>> pacificAtlantic(vector<vector<int>>& matrix) {
+     vector<pair<int, int>> pacificAtlantic(vector<vector<int>>& matrix) {
         vector<pair<int, int>> result;
-//        if(matrix.empty())
-//            return result;
+        if(matrix.empty())
+            return result;
         int m = matrix.size();
         int n = matrix[0].size();
         for(int i = 0; i < m; i++)
             for(int j = 0; j < n; j++)
             {
-                at[i][j] == -1;
-                pc[i][j] == -1;
+                at[i][j] = -1;
+                pc[i][j] = -1;
             }
 
 
@@ -99,4 +101,34 @@ public:
 
         return result;
     }
+		Solution(){}
 };
+
+int main()// for test
+{
+	int a[5] = {1,2,2,3,4};
+	int b[5] = {3,2,3,4,4};
+	int c[5] = {2,4,5,3,1};
+	int d[5] = {6,7,1,4,5};
+	int e[5] = {5,1,1,2,4};
+
+	vector<int> aa,bb,cc,dd,ee;
+	for(int i = 0; i < 5; i++)
+	{
+		aa.push_back(a[i]);
+		bb.push_back(b[i]);
+		cc.push_back(c[i]);
+		dd.push_back(d[i]);
+		ee.push_back(e[i]);
+	}
+
+	vector<vector<int> > matrix;
+	matrix.push_back(aa);
+	matrix.push_back(bb);
+	matrix.push_back(cc);
+	matrix.push_back(dd);
+	matrix.push_back(ee);
+	Solution s;
+	s.pacificAtlantic(matrix);
+	return 0;
+}
