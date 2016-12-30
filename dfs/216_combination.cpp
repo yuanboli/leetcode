@@ -44,9 +44,9 @@ public:
                 if(sum+i < n)
                 {
                     if(nums.size() == curIndex)
-											nums.push_back(i);
+										    nums.push_back(i);
 										else
-											nums[curIndex] = i;
+										    nums[curIndex] = i;
                     dfs(nums, k, n, curIndex+1, res);
                 }
             }
