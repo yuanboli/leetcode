@@ -43,7 +43,10 @@ public:
 
                 if(sum+i < n)
                 {
-                    nums.push_back(i);
+                    if(nums.size() == curIndex)
+											nums.push_back(i);
+										else
+											nums[curIndex] = i;
                     dfs(nums, k, n, curIndex+1, res);
                 }
             }
@@ -53,13 +56,13 @@ public:
 
 };
 
-printVector(const vector<vector<int> >& res)
+void printVector(const vector<vector<int> >& res)
 {
     cout << "[";
     for(int i = 0; i < res.size(); i++)
     {
         cout << "[";
-        for(int j = 0; j < res[i].size(); i++)
+        for(int j = 0; j < res[i].size(); j++)
         {
             cout << res[i][j] << ",";
         }
@@ -67,6 +70,7 @@ printVector(const vector<vector<int> >& res)
 
         cout << "]" << ", ";
     }
+		cout << "\b\b";
     cout << "]\n";
 }
 
